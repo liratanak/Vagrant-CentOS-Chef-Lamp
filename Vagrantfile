@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "https://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.5-x86_64-v20140504.box"
+  config.vm.box = "CentOS-6.5-x86_64-v20140504"
 
   # config.vm.box_check_update = false
 
@@ -29,8 +29,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "chef_solo" do |chef|
     chef.add_recipe "apache2"
-    chef.add_recipe "apache2::mod_php5"
     chef.add_recipe "php"
+    chef.add_recipe "apache2::mod_php5"
     chef.add_recipe "mysql::server"
     chef.add_recipe "php::module_mysql"
     chef.json = {
@@ -48,5 +48,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "mkdir -p /etc/httpd/htdocs", privileged: true
   config.vm.provision "shell", inline: "echo '<h1>It works</h1><p>/etc/httpd/htdocs/index.html</p>' > /etc/httpd/htdocs/index.html", privileged: true
   config.vm.provision "shell", inline: "cp -rf /vagrant/htdocs/* /etc/httpd/htdocs/", privileged: true
+  config.vm.provision "shell", inline: "rm -rf /vagrant/htdocs/*", privileged: true
 
 end

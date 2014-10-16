@@ -20,7 +20,7 @@ end
 
 # port
 default['mysql']['port'] = '3306'
-default['mysql']['version'] = '5.6'
+# default['mysql']['version'] = '5.6'
 
 # server package version and action
 default['mysql']['server_package_version'] = nil
