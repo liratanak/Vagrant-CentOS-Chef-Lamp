@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
   config.vm.provision "shell", inline: "yum install -y php-mbstring", privileged: true
-  config.vm.provision "shell", path: "shellscripts/subversion_installer_1.8.sh -y", privileged: true
+  config.vm.provision "shell", path: "shellscripts/subversion_installer_1.8.sh", args: ["-y"], privileged: true
 
   config.vm.provision "shell", inline: "service iptables stop", privileged: true
   config.vm.provision "shell", inline: "chkconfig iptables off", privileged: true
