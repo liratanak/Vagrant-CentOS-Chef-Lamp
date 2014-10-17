@@ -40,6 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
   config.vm.provision "shell", inline: "yum install -y php-mbstring", privileged: true
+  config.vm.provision "shell", path: "shellscripts/subversion_installer_1.8.sh -y", privileged: true
 
   config.vm.provision "shell", inline: "service iptables stop", privileged: true
   config.vm.provision "shell", inline: "chkconfig iptables off", privileged: true
@@ -48,6 +49,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "mkdir -p /etc/httpd/htdocs", privileged: true
   config.vm.provision "shell", inline: "echo '<h1>It works</h1><p>/etc/httpd/htdocs/index.html</p>' > /etc/httpd/htdocs/index.html", privileged: true
   config.vm.provision "shell", inline: "cp -rf /vagrant/htdocs/* /etc/httpd/htdocs/", privileged: true
-  config.vm.provision "shell", inline: "rm -rf /vagrant/htdocs/*", privileged: true
 
 end
