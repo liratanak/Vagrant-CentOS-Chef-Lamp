@@ -1,9 +1,9 @@
 Vagrant CentOS 6.5 Chef Lamp
 =========================
 
-#Requirement
-VirtualBox | https://www.virtualbox.org/wiki/Downloads
-Vagrant | http://www.vagrantup.com/downloads.html
+#Pre
+- VirtualBox | https://www.virtualbox.org/wiki/Downloads
+- Vagrant | http://www.vagrantup.com/downloads.html
 
 #Installation
 After install `Vagrant` and `Virtualbox`, clone or download this project.
